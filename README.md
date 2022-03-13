@@ -4,7 +4,7 @@
 - 添加打包脚本
 - 添加sqlite3代码
 - 添加主进程和渲染进程通信代码
-- 添加C++代码
+- 添加C++原生代码
 
 ## 运行
 ```bash
@@ -27,7 +27,7 @@ npm install sqlite3 --ignore-scripts
 cd node_modules/sqlite3
 
 export PATH=/Library/Developer/CommandLineTools/usr/bin:$PATH
-node-gyp rebuild --target=16.0.6 --arch=arm64 --dist-url=https://electronjs.org/headers --module_name=node_sqlite3 --module_path=./lib/binding/napi-v3-darwin-arm64
+node-gyp rebuild --target=16.0.6 --arch=arm64 --dist-url=https://electronjs.org/headers --module_name=node_sqlite3 --module_path=../lib/binding/napi-v3-darwin-arm64
 ```
 
 ## 设置淘宝源
@@ -37,16 +37,16 @@ npm config set registry https://registry.npm.taobao.org/
 
 # 参考资源
 
-[npm](https://www.npmjs.com)
+[https://www.npmjs.com](https://www.npmjs.com)
 
-[electron](https://www.electronjs.org)
+[https://www.electronjs.org](https://www.electronjs.org)
 
-[electron-github](https://github.com/electron)
+[https://github.com/electron](https://github.com/electron)
 
-[electron-builder](https://github.com/electron-userland/electron-builder)
+[https://github.com/electron-userland/electron-builder](https://github.com/electron-userland/electron-builder)
 
-[node-sqlite3](https://github.com/mapbox/node-sqlite3)
+[https://github.com/mapbox/node-sqlite3](https://github.com/mapbox/node-sqlite3)
 
-[using-native-node-modules](https://www.electronjs.org/docs/latest/tutorial/using-native-node-modules)
+[https://www.electronjs.org/docs/latest/tutorial/using-native-node-modules](https://www.electronjs.org/docs/latest/tutorial/using-native-node-modules)
 
-[node-addon-examples](https://github.com/nodejs/node-addon-examples)
+[https://github.com/nodejs/node-addon-examples](https://github.com/nodejs/node-addon-examples)
