@@ -28,7 +28,7 @@ cd node_modules/sqlite3
 
 export PATH=/Library/Developer/CommandLineTools/usr/bin:$PATH
 node-gyp rebuild --target=16.0.6 --arch=arm64 --dist-url=https://electronjs.org/headers --module_name=node_sqlite3 --module_path=./lib/binding/napi-v3-darwin-arm64
-
+```
 
 ## 设置淘宝源
 ```bash
