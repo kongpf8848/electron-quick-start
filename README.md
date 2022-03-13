@@ -16,9 +16,9 @@ npm start
 ## 打包
 ```bash
 yarn dist-mac-arm64    //打包macOS M1芯片版本
-yarn dist-mac-x64    //打包macOS x64版本
-yarn dist-win32  //打包Windows 32位版本
-yarn dist-win64  //打包Windows 64位版本
+yarn dist-mac-x64      //打包macOS x64版本
+yarn dist-win32        //打包Windows 32位版本
+yarn dist-win64        //打包Windows 64位版本
 ```
 ## 安装sqlite(macOS)
 ```bash
