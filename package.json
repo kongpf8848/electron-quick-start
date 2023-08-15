@@ -27,8 +27,7 @@
     "electron-builder": "^22.14.13"
   },
   "dependencies": {
-    "node-gyp": "^8.4.1",
-    "sqlite3": "^5.0.2"
+    "node-gyp": "^8.4.1"
   },
   "build": {
     "productName": "electron-start",

@@ -1,15 +1,15 @@
 // Modules to control application life and create native browser window
-const {app, BrowserWindow,ipcMain} = require('electron')
+const { app, BrowserWindow, ipcMain } = require('electron')
 const path = require('path')
-const sqlite3=require('sqlite3')
+//const sqlite3=require('sqlite3')
 
-function createWindow () {
+function createWindow() {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
     webPreferences: {
-      nodeIntegration:true,
+      nodeIntegration: true,
       preload: path.join(__dirname, 'preload.js')
     }
   })
@@ -18,14 +18,14 @@ function createWindow () {
   mainWindow.loadFile('index.html')
 
   // Open the DevTools.
-   mainWindow.webContents.openDevTools()
+  mainWindow.webContents.openDevTools()
 
-   let db = new sqlite3.Database('sq3.db', (err) => {
-      if (err) {
-       return console.error(err.message);
-      }
-      console.log('已经成功连接SQLite数据库');
-   });
+  //  let db = new sqlite3.Database('sq3.db', (err) => {
+  //     if (err) {
+  //      return console.error(err.message);
+  //     }
+  //     console.log('已经成功连接SQLite数据库');
+  //  });
 
   //  db.serialize(() => {
   //      db.run("create table test(name varchar(20))", () => {
@@ -42,9 +42,9 @@ function createWindow () {
   //    })
   //   })
   //  })
-  console.log("appPath:"+app.getAppPath())
-  console.log("exePath:"+app.getPath("exe"))
-  console.log("dirname:"+path.join(__dirname))
+  console.log("appPath:" + app.getAppPath())
+  console.log("exePath:" + app.getPath("exe"))
+  console.log("dirname:" + path.join(__dirname))
 }
 
 
@@ -61,26 +61,32 @@ app.whenReady().then(() => {
     if (BrowserWindow.getAllWindows().length === 0) createWindow()
   })
 
-  ipcMain.on('mainWindowLoaded',function(event,args){
-      let db_path=""
-      if(app.isPackaged){
-       db_path=app.getAppPath().replace("app.asar","db/sqlite.db")
-      }else{
-       db_path = path.join(__dirname,'/db/sqlite.db')
-      }
-
-      let db = new sqlite3.Database(db_path, (err) => {
-           if (err) {
-              return console.error(err.message);
-           }
-           console.log('connected to sqlite db');
-      });
-      db.all("select * from User",(err,rows)=>{
-          if(err) throw err
-          console.log(JSON.stringify(rows))
-          event.reply("resultSent",rows)
-      })
+  ipcMain.on('mainWindowLoaded', function (event, args) {
+    const window = new BrowserWindow({ 
+      width: 300, 
+      height: 300, 
+      title: '视频会议' 
     })
+    window.show()
+    //   let db_path=""
+    //   if(app.isPackaged){
+    //    db_path=app.getAppPath().replace("app.asar","db/sqlite.db")
+    //   }else{
+    //    db_path = path.join(__dirname,'/db/sqlite.db')
+    //   }
+
+    //   let db = new sqlite3.Database(db_path, (err) => {
+    //        if (err) {
+    //           return console.error(err.message);
+    //        }
+    //        console.log('connected to sqlite db');
+    //   });
+    //   db.all("select * from User",(err,rows)=>{
+    //       if(err) throw err
+    //       console.log(JSON.stringify(rows))
+    //       event.reply("resultSent",rows)
+    //   })
+  })
 })
 
 // Quit when all windows are closed, except on macOS. There, it's common
